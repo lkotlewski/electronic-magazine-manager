@@ -25,5 +25,5 @@ steps:
   # Publish Artifacts
 - task: PublishBuildArtifacts@1
   inputs:
-    artifactName: dist
-    pathtoPublish: 'dist'
+    artifactName: frontend_dist
+    pathtoPublish: 'frontend/dist'
