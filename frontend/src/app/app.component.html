@@ -1,2 +1,23 @@
-<p>App works!</p>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened class="vertical-menu">
+    <a href="search">
+      <i class="material-icons">
+        search
+      </i>
+    </a>
+    <a href="update-magazine">
+      <i class="material-icons">
+        playlist_add_check
+      </i>
+    </a>
+    <a href="history">
+      <i class="material-icons">
+        history
+      </i>
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

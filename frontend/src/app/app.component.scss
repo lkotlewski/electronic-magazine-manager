@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+$app-primary: mat-palette($mat-grey);
+$primary: mat-color($app-primary);
+
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+.vertical-menu {
+  width: 50px; /* Set a width if you like */
+  background-color: #3e3187;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.vertical-menu i {
+  color: whitesmoke; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+  margin-top: 10px;
+}
+
