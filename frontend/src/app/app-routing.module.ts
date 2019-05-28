@@ -1,15 +1,15 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {SearchComponent} from './components/search/search.component';
-import {HistoryComponent} from './components/history/history.component';
-import {UpdateMagazineComponent} from './components/update-magazine/update-magazine.component';
+import {NgModule} from '@angular/core'
+import {RouterModule, Routes} from '@angular/router'
+import {SearchComponent} from './components/search/search.component'
+import {HistoryComponent} from './components/history/history.component'
+import {PartDetailsComponent} from './components/part-details/part-details.component'
 
 const routes: Routes = [
   {path: 'search', component: SearchComponent},
-  {path: 'update-magazine', component: UpdateMagazineComponent},
+  {path: 'update-magazine', component: PartDetailsComponent},
   {path: 'history', component: HistoryComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'},
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

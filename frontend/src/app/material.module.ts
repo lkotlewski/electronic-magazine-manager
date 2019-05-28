@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core'
+import {CommonModule} from '@angular/common'
 import {
   MatButtonModule,
   MatCardModule,
@@ -7,7 +7,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatSidenavModule
-} from '@angular/material';
+} from '@angular/material'
 
 @NgModule({
   imports: [
