@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'update-magazine', component: UpdateMagazineComponent},
   {path: 'history', component: HistoryComponent},
+  {path: '', redirectTo: '/search', pathMatch: 'full'},
 ];
 
 @NgModule({
