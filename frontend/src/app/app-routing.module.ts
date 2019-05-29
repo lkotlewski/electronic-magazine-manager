@@ -6,7 +6,8 @@ import {PartDetailsComponent} from './components/part-details/part-details.compo
 
 const routes: Routes = [
   {path: 'search', component: SearchComponent},
-  {path: 'update-magazine', component: PartDetailsComponent},
+  {path: 'part-details/by-number/:number', component: PartDetailsComponent},
+  {path: 'part-details/by-desc/:desc', component: PartDetailsComponent},
   {path: 'history', component: HistoryComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'},
 ]

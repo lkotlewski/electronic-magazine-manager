@@ -8,6 +8,7 @@ import {SearchComponent} from './components/search/search.component'
 import {PartDetailsComponent} from './components/part-details/part-details.component'
 import {HistoryComponent} from './components/history/history.component'
 import {MaterialModule} from './material.module'
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MaterialModule} from './material.module'
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
