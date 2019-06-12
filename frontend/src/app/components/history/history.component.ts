@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core'
+import {Change} from '../../model/change'
+import {ChangesService} from '../../services/changes.service'
 
 @Component({
   selector: 'app-history',
@@ -7,10 +9,14 @@ import {Component, OnInit} from '@angular/core'
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() {
+  changes: Change[]
+  displayedColumns: string[] = ['user', 'partNumber', 'amount', 'time']
+
+  constructor( private changesService: ChangesService) {
   }
 
   ngOnInit() {
+     this.changes = this.changesService.getChanges()
   }
 
 }
