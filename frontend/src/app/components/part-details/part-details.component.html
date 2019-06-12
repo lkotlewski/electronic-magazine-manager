@@ -5,16 +5,16 @@
     </mat-card-title>
     <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="Numer części" value="{{fetchedPart.partNumber}}">
+        <input matInput placeholder="Numer części" value="{{fetchedPart.partNumber}}" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Opis" value="{{fetchedPart.description}}">
+        <input matInput placeholder="Opis" value="{{fetchedPart.description}}" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Producent" value="{{fetchedPart.manufacturer}}">
+        <input matInput placeholder="Producent" value="{{fetchedPart.manufacturer}}" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Ilość" value="{{fetchedPart.amount}}">
+        <input matInput placeholder="Ilość" value="{{fetchedPart.amount}}" readonly>
       </mat-form-field>
 
       <table mat-table [dataSource]="fetchedPart.parameters">
@@ -49,6 +49,10 @@
       </table>
     </mat-card-content>
     <mat-card-actions>
+      <div>
+        <button mat-button (click)="takeElements()">Pobierz części</button>
+        <button mat-button (click)="addElements()">Dodaj części</button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>

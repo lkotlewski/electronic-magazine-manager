@@ -8,14 +8,16 @@ import {SearchComponent} from './components/search/search.component'
 import {PartDetailsComponent} from './components/part-details/part-details.component'
 import {HistoryComponent} from './components/history/history.component'
 import {MaterialModule} from './material.module'
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { ElementAmountDialogComponent } from './components/element-amount-dialog/element-amount-dialog.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     PartDetailsComponent,
-    HistoryComponent
+    HistoryComponent,
+    ElementAmountDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import {HttpClientModule} from '@angular/common/http'
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ElementAmountDialogComponent]
 })
 export class AppModule {
 }
