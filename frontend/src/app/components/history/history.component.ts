@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, ViewChild} from '@angular/core'
 import {Change} from '../../model/change'
 import {ChangesService} from '../../services/changes.service'
+import {MatPaginator, MatTableDataSource} from '@angular/material'
 
 @Component({
   selector: 'app-history',
@@ -9,14 +10,17 @@ import {ChangesService} from '../../services/changes.service'
 })
 export class HistoryComponent implements OnInit {
 
-  changes: Change[]
+  changes: MatTableDataSource<Change>
   displayedColumns: string[] = ['user', 'partNumber', 'amount', 'time']
+
+  @ViewChild(MatPaginator) paginator: MatPaginator
 
   constructor( private changesService: ChangesService) {
   }
 
   ngOnInit() {
-     this.changes = this.changesService.getChanges()
+     this.changes = new MatTableDataSource(this.changesService.getChanges())
+     this.changes.paginator = this.paginator
   }
 
 }
