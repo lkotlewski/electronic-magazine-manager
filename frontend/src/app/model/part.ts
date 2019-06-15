@@ -1,7 +1,7 @@
 import {Parameter} from './parameter'
 
 export class Part {
-  id: string
+  _id: string
   partNumber: string
   description: string
   amount: number

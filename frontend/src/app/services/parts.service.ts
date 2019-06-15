@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core'
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {Part} from '../model/part'
+import {Observable} from 'rxjs'
+import {PartUpdateResponse} from '../model/part-update-response'
+
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +12,7 @@ export class PartsService {
 
   readonly PARTS: Part[] = [
     {
-      id: '1',
+      _id: '1',
       description: 'MEMS Microphones Bottom Port SISONIC Microphone',
       partNumber: 'SPV0842LR5H-1',
       amount: 3,
@@ -35,12 +38,13 @@ export class PartsService {
     return this.PARTS.find(part => part.description.includes(name))
   }
 
-  getPartByNumber(partNumber: string): Part {
-    // const params = new HttpParams().set('partNumber', partNumber)
-    // this.http.get(`${this.backendUrl}/part`, {params: params}).subscribe(result => {
-    //   return result as Part
-    // })
+  getPartByNumber(partNumber: string) {
+    const params = new HttpParams().set('partNumber', partNumber)
+    console.log(`${this.backendUrl}/parts/part-number/${partNumber}`)
+    return this.http.get(`${this.backendUrl}/parts/part-number/${partNumber}`)
+  }
 
-    return this.PARTS.find(part => part.partNumber === partNumber)
+  updatePartAmount(id: string, amount: number) {
+    return this.http.put(`${this.backendUrl}/parts/${id}/update-amount`, {amount})
   }
 }

@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router'
 import {PartsService} from '../../services/parts.service'
 import {MatDialog, MatDialogConfig} from '@angular/material'
 import {ElementAmountDialogComponent} from '../element-amount-dialog/element-amount-dialog.component'
+import {PartUpdateResponse} from '../../model/part-update-response'
 
 @Component({
   selector: 'app-update-magazine',
@@ -12,7 +13,10 @@ import {ElementAmountDialogComponent} from '../element-amount-dialog/element-amo
 })
 export class PartDetailsComponent implements OnInit {
 
-  fetchedPart: Part
+  fetchedPart: Part = {
+    _id: '', partNumber: '', amount: null, manufacturer: '',
+    minAmount: null, description: '', parameters: []
+  }
   displayedColumns: string[] = ['name', 'min', 'typ', 'max', 'units']
 
   constructor(
@@ -26,7 +30,9 @@ export class PartDetailsComponent implements OnInit {
     const desc: string = this.route.snapshot.paramMap.get('desc')
 
     if (partNumber) {
-      this.fetchedPart = this.partService.getPartByNumber(partNumber)
+      this.partService.getPartByNumber(partNumber).subscribe(result => {
+        this.fetchedPart = result as Part
+      })
     }
     if (desc) {
       this.fetchedPart = this.partService.getPartByDescription(desc)
@@ -43,12 +49,15 @@ export class PartDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(ElementAmountDialogComponent, dialogConfig)
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (add) {
-          console.log(result + ' elements was added')
-        } else {
-          console.log(result + ' elements was taken')
+      let value: number = +result
+      if (value) {
+        if (!add) {
+          value = -value
         }
+        this.partService.updatePartAmount(this.fetchedPart._id, value).subscribe(updateResult => {
+            const partUpdateResponse = updateResult as PartUpdateResponse
+            this.fetchedPart = partUpdateResponse.value as Part
+          })
       }
     })
   }
