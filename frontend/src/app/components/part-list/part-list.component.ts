@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core'
 import {MatPaginator, MatTableDataSource} from '@angular/material'
 import {PartsService} from '../../services/parts.service'
 import {Part} from '../../model/part'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-part-list',
@@ -11,11 +12,13 @@ import {Part} from '../../model/part'
 export class PartListComponent implements OnInit {
 
   parts: MatTableDataSource<Part>
-  displayedColumns: string[] = ['partNumber', 'description', 'amount', 'manufacturer']
+  displayedColumns: string[] = ['partNumber', 'description', 'amount', 'manufacturer', 'actions']
 
   @ViewChild(MatPaginator) paginator: MatPaginator
 
-  constructor(private partsService: PartsService) {
+  constructor(
+    private partsService: PartsService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -24,5 +27,9 @@ export class PartListComponent implements OnInit {
       this.parts = new MatTableDataSource(allParts as Part[])
       this.parts.paginator = this.paginator
     })
+  }
+
+  navigateToDetails(element: Part) {
+    this.router.navigate([`part-details/by-number/${element.partNumber}`])
   }
 }
