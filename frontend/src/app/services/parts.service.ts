@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core'
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {Part} from '../model/part'
-import {Observable} from 'rxjs'
-import {PartUpdateResponse} from '../model/part-update-response'
 
 
 @Injectable({
@@ -47,4 +45,9 @@ export class PartsService {
   updatePartAmount(id: string, amount: number) {
     return this.http.put(`${this.backendUrl}/parts/${id}/update-amount`, {amount})
   }
+
+  getAll() {
+    return this.http.get(`${this.backendUrl}/parts/`)
+  }
 }
+

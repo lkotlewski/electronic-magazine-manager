@@ -19,8 +19,10 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.changes = new MatTableDataSource(this.changesService.getChanges())
-     this.changes.paginator = this.paginator
+    this.changesService.getChanges().subscribe(changes => {
+      const allChanges = changes as unknown
+      this.changes = new MatTableDataSource(allChanges as Change[])
+      this.changes.paginator = this.paginator
+    })
   }
-
 }

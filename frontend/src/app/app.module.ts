@@ -9,7 +9,8 @@ import {PartDetailsComponent} from './components/part-details/part-details.compo
 import {HistoryComponent} from './components/history/history.component'
 import {MaterialModule} from './material.module'
 import {HttpClientModule} from '@angular/common/http';
-import { ElementAmountDialogComponent } from './components/element-amount-dialog/element-amount-dialog.component'
+import { ElementAmountDialogComponent } from './components/element-amount-dialog/element-amount-dialog.component';
+import { PartListComponent } from './components/part-list/part-list.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ElementAmountDialogComponent } from './components/element-amount-dialog
     SearchComponent,
     PartDetailsComponent,
     HistoryComponent,
-    ElementAmountDialogComponent
+    ElementAmountDialogComponent,
+    PartListComponent
   ],
   imports: [
     BrowserModule,
