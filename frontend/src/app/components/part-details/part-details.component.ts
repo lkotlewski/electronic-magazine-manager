@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {Part} from '../../model/part'
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 import {PartsService} from '../../services/parts.service'
 import {MatDialog, MatDialogConfig} from '@angular/material'
 import {ElementAmountDialogComponent} from '../element-amount-dialog/element-amount-dialog.component'
@@ -21,6 +21,7 @@ export class PartDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private partService: PartsService,
     private dialog: MatDialog) {
   }
@@ -31,11 +32,21 @@ export class PartDetailsComponent implements OnInit {
 
     if (partNumber) {
       this.partService.getPartByNumber(partNumber).subscribe(result => {
-        this.fetchedPart = result as Part
+        if (result) {
+          this.fetchedPart = result as Part
+        } else {
+          this.router.navigate(['nothing-found'])
+        }
       })
     }
     if (desc) {
-      this.fetchedPart = this.partService.getPartByDescription(desc)
+      this.partService.getPartByDescription(desc).subscribe(result => {
+        if (result) {
+          this.fetchedPart = result as Part
+        } else {
+          this.router.navigate(['nothing-found'])
+        }
+      })
     }
   }
 
