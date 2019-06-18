@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Node",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/**/index.js",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "Node1",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/getPart/index.js",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "Launch via npm",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "externalTerminal",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "debug"
+      ],
+      "port": 9229
+    },
+    {
+      "name": "Attach to Node Functions",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "preLaunchTask": "func: host start"
+    }
+  ]
+}

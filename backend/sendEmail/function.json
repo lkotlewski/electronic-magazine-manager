@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "sendGrid",
+      "name": "message",
+      "apiKey": "Grid",
+      "to": "kajetanspionek@outlook.com",
+      "from": "kajetanspionek@outlook.com",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

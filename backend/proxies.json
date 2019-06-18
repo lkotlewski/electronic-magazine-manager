@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "GET_PART_VIA_ID": {
+            "matchCondition": {
+                "route": "/api/parts/id/{id}",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "https://localhost/api/getPart",
+            "requestOverrides": {
+                "backend.request.method": "get",
+                "backend.request.querystring.id": "{id}"
+            }
+        },
+        "GET_PART_VIA_NAME": {
+            "matchCondition": {
+                "route": "/api/parts/part-number/{partNumber}",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "https://localhost/api/getPartViaName",
+            "requestOverrides": {
+                "backend.request.method": "get",
+                "backend.request.querystring.partNumber": "{partNumber}"
+            }
+        },
+        "DELETE_PART": {
+            "matchCondition": {
+                "route": "/api/parts/{id}",
+                "methods": [
+                    "DELETE"
+                ]
+            },
+            "backendUri": "https://localhost/api/deletePart",
+            "requestOverrides": {
+                "backend.request.method": "delete",
+                "backend.request.querystring.id": "{id}"
+            }
+        },
+        "GET_PART_VIA_DESCRIPTION": {
+            "matchCondition": {
+                "route": "/api/parts/description/{description}",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "https://localhost/api/getPartViaDescription",
+            "requestOverrides": {
+                "backend.request.method": "get",
+                "backend.request.querystring.description": "{description}"
+            }
+        },
+        "UPDATE_PART_AMOUNT": {
+            "matchCondition": {
+                "route": "/api/parts/{id}/update-amount",
+                "methods": [
+                    "PUT"
+                ]
+            },
+            "backendUri": "https://localhost/api/updatePartAmount",
+            "requestOverrides": {
+                "backend.request.method": "put",
+                "backend.request.querystring.id": "{id}",
+                "backend.request.querystring.amount": "{amount}"
+            }
+        },
+        "GET_TRANSACTIONS": {
+            "matchCondition": {
+                "route": "/api/transactions",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "https://localhost/api/getTransactions"
+        },
+        "GET_PARTS": {
+            "matchCondition": {
+                "route": "/api/parts/",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "https://localhost/api/getParts"
+        },
+        "SEND_EMAIL": {
+            "matchCondition": {
+                "route": "/api/sendEmail/{partName}",
+                "methods": [
+                    "POST"
+                ]
+            },
+            "backendUri": "https://localhost/api/sendEmail",
+            "requestOverrides": {
+                "backend.request.method": "post",
+                "backend.request.querystring.partName": "{partName}"
+            }
+        }
+    }
+}
